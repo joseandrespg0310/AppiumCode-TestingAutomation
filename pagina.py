@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 def iniciar_app():
-    # Configuración inicial para la primera actividad (MainActivity)
+    
     options = UiAutomator2Options()
     options.platform_name = "Android"
     options.platform_version = "15"
@@ -15,22 +15,21 @@ def iniciar_app():
     options.app_activity = "com.example.chocopop.MainActivity"
     options.automation_name = "UiAutomator2"
 
-    # Conexión al servidor de Appium
-    driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", options=options)
 
-    # Esperar unos segundos para que cargue el Activity principal
+    driver = webdriver.Remote("http://.../wd/hub", options=options)
+
+  
     sleep(3)
 
-    # Ingreso de credenciales
     login_usuario = driver.find_element(AppiumBy.ID, "com.example.chocopop:id/login_usuario")
     login_usuario.clear()  
-    login_usuario.send_keys("Choco")
-    print("Se escribió 'Choco' en el campo de usuario.")
+    login_usuario.send_keys("...")
+    print("Se escribió '...' en el campo de usuario.")
 
     login_contraseña = driver.find_element(AppiumBy.ID, "com.example.chocopop:id/login_contraseña")
     login_contraseña.clear()  
-    login_contraseña.send_keys("ChocoPop2026")
-    print("Se escribió 'ChocoPop2026' en el campo de contraseña.")
+    login_contraseña.send_keys("... ")
+    print("Se escribió '...' en el campo de contraseña.")
 
     # Hacer clic en el botón de inicio de sesión
     login_button = driver.find_element(AppiumBy.ID, "com.example.chocopop:id/login_iniciar_sesion")
@@ -202,7 +201,7 @@ try:
         EC.presence_of_element_located((AppiumBy.ID, "com.example.chocopop:id/decreaseButton"))
     )
 
-    # Hacer clic 14 veces en el botón 'decreaseButton'
+    
     for i in range(20):
         decrease_button.click()
         print(f"Se hizo clic {i + 1} en el botón 'decreaseButton'.")
